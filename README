@@ -1,3 +1,18 @@
 https://eeghacker.blogspot.com/2013/11/brainbay-eeg-visualization-software.html
 https://sites.google.com/site/biofeedbackpages/brainbay-openbci/spectrogram?authuser=0
 https://docs.openbci.com/Software/CompatibleThirdPartySoftware/BrainBay/
+https://stackoverflow.com/questions/63597475/running-a-windows-executable-calc-exe-etc-inside-a-pyqt-application
+
+3.3 Compiliation & Linking -Information for MinGW:
+Compiling/Linking-information for MinGW: (contributed by Jeremy Wilkerson).
+Here are the steps to build the application (please note that the MinGW build is not officially supported – it works but maybe some elements must be excluded from the build):
+-use the make to compile and link just the main source files
+-use the make-all.bat file to compile and link everthing, including matheval library
+The resource file can be compiled seperately using windres -i brainBay.rc -o brainBayRes.o
+Following compile switches are used: g++ -c -DWIN32 -D_DEBUG -D_WINDOWS -
+D_MBCS -DMINGW *.cpp
+the -DMINGW define tells the preprocessor to bypass the skinstyle library for the
+skinned dialog interface because this is only supported by the MSVC++ compiler by
+now. If mingw\bin is on your path, use the command 'make depends', then 'make'.
+The 'make depends' generates a file that tells make which header files each cpp file
+depends on, and it doesn't need to be executed again unless that information changes.

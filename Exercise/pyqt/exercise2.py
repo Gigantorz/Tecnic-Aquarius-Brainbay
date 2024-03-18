@@ -15,5 +15,4 @@ def initUI(self):
     self.setWindowTitle('File dialog')
     self.show()
 
-
 ## Get this to work...

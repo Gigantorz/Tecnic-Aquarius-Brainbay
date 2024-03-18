@@ -13,8 +13,10 @@ class MyApp(QPushButton):
         self.clicked.connect(self.launchBrainBay)
 
     def launchBrainBay(self):
-        address = "~/home/gigantorz/.wine/drive_c/users/gigantorz/AppData/Local/BrainBay"
-        self.process.start(address)
+        address_windows2 = "C:\\Users\\Rayma\\AppData\\Local\\BrainBay\\brainBay.exe"
+
+        # address = "~/home/gigantorz/.wine/drive_c/users/gigantorz/AppData/Local/BrainBay"
+        self.process.start(address_windows2)
 
 if __name__ == '__main__':
     app = QApplication([])

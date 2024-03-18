@@ -1,0 +1,29 @@
+Launching an external .exe file "inside" a PyQt window and adjusting the PyQt window's dimensions based on the .exe file's window size is not 
+straightforward because external applications run in their separate windowing contexts outside the control of the PyQt application's Qt Widgets.
+However, you can approximate this with some workarounds and OS-specific functionalities.
+Here is an approach you might consider, focusing on windows as the target operating system.
+
+1. launching .exe
+    you can launch an external .exe app using the `subprocess` or `QProcess`.
+    embedding the windo into a PyQT widget is challenging due to the separate windowing systems
+    Some application support specific command line arguments for embedding or window management, but not universally applicable.
+
+2. Controlling the window size and position
+    - obtain the window handle (HWND in windows) of the external application
+    - Use windows API fucntions (e.g., through the ctypes or pywin32 libraries) to get the size and position of the external app window.    
+    - adjust the PyQT window size and position accordingly
+Example:
+    1. launch the external app
+    2. get the window handle
+    3. get window dimensions
+    4. resize pyqt window.
+
+Limitations
+- this approach is tailored for windows only!!!
+- user permissions might prevent manipulation of other applications' windows
+- some apps might not allow their windows to be controlled by external scripts
+- timing and focus (app lag after launching)
+    - there might be timing issues (e.g., ensuring the external application has launched and its windows is ready to be manipulated)
+
+This workaround is a hack and might not be suitable for all use cases or applications.
+The reliability and behaviour are based on the external application and the environment.

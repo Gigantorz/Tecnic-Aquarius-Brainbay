@@ -15,6 +15,7 @@ class MainWindow(QMainWindow):
         subprocess.Popen(["notepad.exe"])
         time.sleep(1)  # Wait for the window to open. Adjust as necessary.
 
+        # Read through this: https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/obtain-console-window-handle
         # Find the window handle for Notepad
         hwnd = FindWindow(None, "Untitled - Notepad")
 

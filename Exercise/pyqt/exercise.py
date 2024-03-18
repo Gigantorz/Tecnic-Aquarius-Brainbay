@@ -1,7 +1,6 @@
 from PyQt6.QtCore import QProcess
 from PyQt6.QtWidgets import QApplication, QPushButton
 
-
 # In the pyQT application, where you want to launch Brainbay, you will
 # Create an instance of 'QProcess'
 # This instance will be used to start the brainbay application
@@ -9,6 +8,17 @@ from PyQt6.QtWidgets import QApplication, QPushButton
 class MyApp(QPushButton):
     def __init__(self):
         super().__init__('Launch BrainBay')
+
+        # button = QPushButton('Launch BrainBay', self)
+        # widget = QWidget()
+        # layout = QVBoxLayout()
+        # layout.addWidget(button)
+        # widget.setLayout(layout)
+        # self.setCentralWidget(widget)
+
+        self.setGeometry(500, 500, 450, 400)
+        self.setWindowTitle('Exercise 3')
+        self.show()
         self.process = QProcess(self)
         self.clicked.connect(self.launchBrainBay)
 

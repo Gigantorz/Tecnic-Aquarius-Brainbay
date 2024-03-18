@@ -25,9 +25,9 @@ class MainWindow(QMainWindow):
 
     def launchBrainBay(self):
         address_windows2 = "C:\\Users\\Rayma\\AppData\\Local\\BrainBay\\brainBay.exe"
-        process = QProcess(self)
-        process.started.connect(self.onProcessStarted)
-        process.start(address_windows2)
+        self.process = QProcess(self)
+        self.process.started.connect(self.onProcessStarted)
+        self.process.start(address_windows2)
 
     def onProcessStarted(self):
         process = self.sender()
@@ -37,6 +37,11 @@ class MainWindow(QMainWindow):
         width = rect[2] - rect[0]
         height = rect[3] - rect[1]
         self.resize(width, height)
+
+    def closeEvent(self, event):
+        if self.process is not None:
+            self.process.kill()
+        event.accept()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

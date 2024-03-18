@@ -1,5 +1,5 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton
 import subprocess
 import time
 from win32gui import FindWindow, GetWindowRect
@@ -22,6 +22,10 @@ class MainWindow(QMainWindow):
             rect = GetWindowRect(hwnd)  # Get window dimensions
             x, y, width, height = rect
             self.setGeometry(x, y, width - x, height - y)  # Resize PyQt window
+
+        # Create a button
+        button = QPushButton("Click me", self)
+        button.setGeometry(10, 10, 100, 30)  # Set button position and size
 
 app = QApplication(sys.argv)
 win = MainWindow()

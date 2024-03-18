@@ -27,3 +27,7 @@ Limitations
 
 This workaround is a hack and might not be suitable for all use cases or applications.
 The reliability and behaviour are based on the external application and the environment.
+
+Resources: 
+QProcess Doc: https://doc.qt.io/qtforpython-5/PySide2/QtCore/QProcess.html
+windows handler (Essential for launching the window inside of pyqt): https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/obtain-console-window-handle

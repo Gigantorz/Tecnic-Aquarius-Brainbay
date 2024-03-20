@@ -40,17 +40,27 @@ class Example(QMainWindow):
         # Adjust these values based on the actual window title and class name of brainBay.exe
         hwnd = 0
         start = time.time()
+        """
+        There is something wrong about how the windows handler is being retrieved or even how it is working that it is not grabbing the 
+        entirity of the brainbay software, because there are still some stuff that are floating around from it. 
+
+        This doesn't mean it won't work well with other software, so this could still work with MNE scan and analyze.
+        """
+
         while hwnd == 0:
-            time.sleep(0.01)
-            hwnd = win32gui.FindWindowEx(0, 0, None, "brainbay")  # Window class name might need to be adjusted
+            time.sleep(0.01) # to give the other thread execute the runExe() function and launch brainbay
+            # Part of the win32 gui module, which is a python wrapper for the windows API
+            # FindWindowEx retrieves a handle toa window whose class name and window name matched the specified string.
+            hwnd = win32gui.FindWindowEx(0, 0, None, "brainbay")  # Get the windows handler.
             end = time.time()
             if end - start > 5:  # Timeout after 5 seconds
                 print("Could not find the brainBay window.")
                 return
 
-        window = QWindow.fromWinId(hwnd)
-        widget = QWidget.createWindowContainer(window, self.central_widget)
-        self.v_layout.addWidget(widget)
+        # Qwindow is a class that represents a window in the underlying windowing system.
+        window = QWindow.fromWinId(hwnd) # if window is found return the windowID
+        widget = QWidget.createWindowContainer(window, self.central_widget) # The found windowID is wrapped in a widget container using createWindowContainer
+        self.v_layout.addWidget(widget) # container widget is added to the vertical_layout.
 
     @staticmethod
     def runExe():

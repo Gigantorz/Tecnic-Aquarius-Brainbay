@@ -1,0 +1,3 @@
+Find a way to make the UI pretty meaning:
+Have it so that the launch of brainbay is a custom ui. 
+- Find out how we can do this with cpp (we are going to have to recompile the project) or pyqt (hacky way)

@@ -31,3 +31,9 @@ The reliability and behaviour are based on the external application and the envi
 Resources: 
 QProcess Doc: https://doc.qt.io/qtforpython-5/PySide2/QtCore/QProcess.html
 windows handler (Essential for launching the window inside of pyqt): https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/obtain-console-window-handle
+
+---
+Explanations for why the GUI is weird when embedded...
+The brainbay.exe application may have its own GUI thread that doesn't synchronize well when embedded in another application. 
+This can sometimes result in erratic behaviour like what is happening in my implementation.
+It is possible that "brainbay.exe" uses multiple childe windows for its UI components, which might not all be captured when embedding just the main window handle.

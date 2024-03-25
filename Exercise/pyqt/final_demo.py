@@ -1,3 +1,13 @@
+"""
+Written by: Raymart Datuin
+Tecniq Aquarius
+Winter 2024
+University of Alberta
+ 
+Description:
+
+Notes:
+"""
 import logging
 import os
 import glob
